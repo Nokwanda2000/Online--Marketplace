@@ -41,7 +41,7 @@ export default function Navigation() {
               <li><Link to="/" onClick={toggleMenu}>Home</Link></li>
               <li><Link to="/Shoppinglistpage" onClick={toggleMenu}>Shop</Link></li>
               <li><Link to="#about" onClick={toggleMenu}>About</Link></li>
-              <li><Link to="/Footer" onClick={toggleMenu}>Contact</Link></li>
+              <li><Link to="/Loginpage" onClick={toggleMenu}>Login</Link></li>
             </ul>
           )}
         </div>
