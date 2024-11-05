@@ -31,10 +31,10 @@ export default function Footer() {
                 About us
               </a>
             </li>
-            <Link to='Policiespage'>
+            <Link to='/AddItemspage'>
               <li>
                 <a href="#" className="block hover:text-white transition-colors duration-200">
-                  Payment & cancellation policies
+                  Sell your products
                 </a>
               </li>
             </Link>

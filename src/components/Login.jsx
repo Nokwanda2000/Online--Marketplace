@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'; 
 import { loginUser } from '../Slices/authSlice';
 import { Button, TextField, Typography, Box, IconButton, InputAdornment } from '@mui/material';
-import { Visibility, VisibilityOff } from '@mui/icons-material'; // Import icons for visibility toggle
-import { Link } from 'react-router-dom'; 
+import { Visibility, VisibilityOff } from '@mui/icons-material'; 
+import { Link, useNavigate } from 'react-router-dom'; 
 
 export default function LoginPage() {
   const dispatch = useDispatch();
+  const navigate = useNavigate(); 
   const { loading, error } = useSelector((state) => state.auth);
   
   const [email, setEmail] = useState('');
@@ -15,7 +16,16 @@ export default function LoginPage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(loginUser({ email, password }));
+    // Dispatch loginUser action and handle successful login
+    dispatch(loginUser({ email, password })).then((action) => {
+      if (action.type === 'auth/login/fulfilled') {
+        alert("Login Successful");
+        console.log(action);
+
+        // Navigate to Shopping List on successful login
+        navigate('/Shoppinglistpage'); 
+      }
+    });
   };
 
   return (

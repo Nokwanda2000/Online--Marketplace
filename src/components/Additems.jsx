@@ -18,6 +18,7 @@ export default function AddItems() {
     setItem({ ...item, [name]: value });
   };
 console.log(item);
+
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {

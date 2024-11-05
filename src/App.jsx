@@ -8,7 +8,7 @@ import Loginpage from './pages/Loginpage';
 import Registerpage from './pages/Registerpage';
 import Shoppinglistpage from './pages/Shoppinglistpage';
 import Cartpage from './pages/Cartpage';
-import Additemspage from './pages/Additemspage';
+import Additemspage from './pages/Additemspage'
 
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
       
 
       </Routes>
-      </div>
+         </div>
    
       <Footer />
  

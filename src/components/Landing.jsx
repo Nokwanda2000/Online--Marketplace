@@ -39,7 +39,7 @@ export default function Landing() {
                   <h3 className="text-xl font-semibold text-white">{category}</h3>
                 </div>
                 <div className="p-4">
-                  <Link to={`/category/${category.toLowerCase()}`}>
+                  <Link to={`/Shoppinglistpage${category.toLowerCase()}`}>
                     <button className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg">
                       Shop Now
                     </button>
