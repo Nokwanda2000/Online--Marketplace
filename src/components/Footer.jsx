@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-400 p-10 w-screen bottom-0 ">
+    <footer className="bg-gray-900  text-gray-400 p-10 w-svw bottom-0 ">
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {/* Services Section */}
         <div>
@@ -66,13 +66,13 @@ export default function Footer() {
         {/* Contact Section */}
         <div>
           <h6 className="text-white text-lg font-semibold mb-4">Contact Us</h6>
-          <p className="mb-2">Email: LuxuryStays@gmail.com</p>
+          <p className="mb-2">Email: onlinemarketplace@gmail.com</p>
           <p>Phone: +123 456 7890</p>
         </div>
       </div>
 
       <div className="mt-8 border-t border-gray-700 pt-4 text-center text-sm text-white">
-        © 2024 Luxury Stays.com. All rights reserved.
+        © 2024 MyMarketplace. All rights reserved.
       </div>
     </footer>
   );

@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchItems } from '../Slices/AdditemsSlice'; 
 import { addToCart } from '../Slices/CartSlice'; 
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link } from 'react-router-dom';
+import { db } from '../firebase.config'; // Import your Firebase config
+import { collection, getDocs } from 'firebase/firestore'; // Firestore methods
 
 export default function ShoppingList() {
   const dispatch = useDispatch();
@@ -11,11 +13,26 @@ export default function ShoppingList() {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [notification, setNotification] = useState('');
 
+  // Fetch items from Firestore when the component mounts
   useEffect(() => {
-    dispatch(fetchItems());
+    const fetchItemsFromFirestore = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, 'items')); // Fetch items from Firestore
+        const fetchedItems = [];
+        querySnapshot.forEach((doc) => {
+          fetchedItems.push({ id: doc.id, ...doc.data() }); // Collect data and add doc ID
+        });
+
+        // Dispatch the fetched items to Redux
+        dispatch(fetchItems(fetchedItems));
+      } catch (error) {
+        console.error('Error fetching items from Firestore:', error);
+      }
+    };
+
+    fetchItemsFromFirestore();
   }, [dispatch]);
 
-  // Filter items based on search query and selected category
   const filteredItems = items.filter(item => {
     const matchesSearch = item.title.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = selectedCategory ? item.category === selectedCategory : true;
@@ -38,7 +55,6 @@ export default function ShoppingList() {
     console.log(`Added ${item.title} to cart`);
   };
 
-  // Get unique categories for the filter
   const categories = Array.from(new Set(items.map(item => item.category)));
 
   return (
@@ -77,8 +93,6 @@ export default function ShoppingList() {
           ))}
         </select>
       </div>
-
-     
 
       {/* Categories and Items */}
       {Object.keys(itemsByCategory).length > 0 ? (

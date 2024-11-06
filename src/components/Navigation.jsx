@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'; // Import MUI ShoppingCart Icon
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false); // State to manage the mobile menu visibility
@@ -9,7 +10,7 @@ export default function Navigation() {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-screen bg-black shadow-lg z-50">
+    <header className=" flex fixed top-0 left-0 w-svw bg-black shadow-lg z-50">
       <div className="navbar container mx-auto p-4 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center space-x-4">
@@ -23,11 +24,13 @@ export default function Navigation() {
           <Link to="#about" className="text-white hover:text-blue-600">About</Link>
           <Link to="/Loginpage" className="text-white hover:text-blue-600">Login</Link>
         </div>
-        
-     
-      
 
-      
+        {/* Cart Icon */}
+        <div className="flex items-center space-x-4">
+          <Link to="/Cartpage">
+            <ShoppingCartIcon className="text-white hover:text-blue-600" sx={{ fontSize: 30 }} />
+          </Link>
+        </div>
 
         {/* Hamburger Menu for Small Screens */}
         <div className="dropdown dropdown-end md:hidden">
@@ -42,6 +45,7 @@ export default function Navigation() {
               <li><Link to="/Shoppinglistpage" onClick={toggleMenu}>Shop</Link></li>
               <li><Link to="#about" onClick={toggleMenu}>About</Link></li>
               <li><Link to="/Loginpage" onClick={toggleMenu}>Login</Link></li>
+              <li><Link to="/Cartpage" onClick={toggleMenu}>Cart</Link></li>
             </ul>
           )}
         </div>

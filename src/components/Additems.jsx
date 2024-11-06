@@ -17,7 +17,7 @@ export default function AddItems() {
     const { name, value } = e.target;
     setItem({ ...item, [name]: value });
   };
-console.log(item);
+  console.log(item);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -41,6 +41,7 @@ console.log(item);
       category: '',
       image: ''
     }); // Reset form
+    alert("Item Added Successfully");
   };
 
   return (
@@ -114,10 +115,10 @@ console.log(item);
           />
         </div>
 
-        {/* Submit Button */}
+        {/* Submit Button with Dark Theme */}
         <button
           type="submit"
-          className="w-full bg-indigo-600 text-white py-1 px-4 rounded hover:bg-indigo-700 transition-colors"
+          className="w-full bg-gray-800 text-white py-2 px-4 rounded hover:bg-gray-700 transition-colors"
         >
           Add Item
         </button>
